@@ -1,0 +1,86 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+
+% Page margins
+\geometry{margin=1in}
+
+% Custom colors and section styling
+\definecolor{primaryblue}{RGB}{31, 73, 125}
+\titleformat{\section}{\large\bfseries\color{primaryblue}}{\thesection.}{0.5em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Course Syllabus: Building Quantum Computers}} \\
+    \vspace{0.5em}
+    {\large \textbf{Master in Quantum Computing}} \\
+    \vspace{0.2em}
+    {\large \textit{Semester 2}}\\
+    \vspace{1em}
+    {\large University of Setif 1}
+\end{center}
+
+\vspace{1.5em}
+
+\section{Overview of Current Technologies}
+\begin{itemize}[noitemsep]
+    \item Two-level systems.
+    \item Bloch Sphere from an Experimental Point of View.
+    \item DiVincenzo's Criteria.
+\end{itemize}
+
+\section{Superconducting Qubits}
+\begin{itemize}
+    \item \textbf{Introduction to Superconductivity:} Cooper Pairs.
+    \item \textbf{Josephson Junctions:} Introduction; Quantum tunneling and Josephson Tunneling; Josephson Energy and Washboard Potential; SQUID.
+    \item \textbf{Superconducting Qubits:}
+    \begin{itemize}[noitemsep]
+        \item LC Oscillator, Anharmonic Oscillators and The Josephson Junction.
+        \item Cooper Pair Box -- Artificial Atom: Josephson junction as a two-level system.
+        \item Transmon qubit: fundamentals (e.g., resonant frequency, anharmonicity).
+        \item Circuit QED, Jaynes-Cummings model, Vacuum-Field Rabi Oscillations, Dispersive Model, Qubit Readout.
+    \end{itemize}
+    \item \textbf{Sources of Decoherence}
+    \item \textbf{Other Qubits:} Charge, Phase, and Flux Qubits.
+    \item \textbf{Quantum Gates:} Circuit Quantum Electrodynamics (QED), CNOT Gate Using Charge Qubits.
+\end{itemize}
+
+\section{Atomic Qubits}
+\begin{itemize}[noitemsep]
+    \item Relevant Structure of Atoms.
+    \item Trapping and Cooling Atoms and Ions.
+    \item Ion trap Quantum Gates.
+    \item Sources of Decoherence.
+\end{itemize}
+
+\section{Spin Qubits}
+\begin{itemize}[noitemsep]
+    \item Spin in an External Magnetic Field.
+    \item Spin Qubits in Silicon.
+    \item Spin Qubits in Diamond NV Centers.
+    \item Sources of Decoherence.
+\end{itemize}
+
+\section{Photonic Qubits}
+\begin{itemize}[noitemsep]
+    \item Basic Optical Components and Single Photon Sources.
+    \item Polarization, Optical Angular Mode Encoded Qubits.
+    \item Entangled Photons and Manipulations and Cluster States.
+    \item Sources of Decoherence.
+\end{itemize}
+
+\vspace{1cm}
+
+\section*{Evaluation}
+\begin{itemize}[label=--]
+    \item Final exam: 60\%
+    \item Personal work: 40\%
+\end{itemize}
+
+\end{document}

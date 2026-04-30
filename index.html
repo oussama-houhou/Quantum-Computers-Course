@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Computers - University of Setif 1</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1f497d;
+            --sidebar-width: 280px;
+            --bg-light: #f4f7f9;
+            --text-dark: #333;
+            --accent-color: #3498db;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            display: flex;
+        }
+
+        nav#sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--primary-blue);
+            color: white;
+            position: fixed;
+            left: 0; top: 0;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        nav#sidebar h2 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+
+        .menu-category { margin-bottom: 25px; }
+        .menu-category h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 10px;
+        }
+
+        .menu-category ul { list-style: none; }
+        .menu-category ul li { margin-bottom: 8px; }
+        .menu-category ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .menu-category ul li a i { margin-right: 10px; width: 20px; text-align: center; font-size: 0.8rem; }
+        .menu-category ul li a:hover { color: var(--accent-color); padding-left: 5px; }
+
+        main#content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 40px;
+            max-width: 1000px;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        header h1 { color: var(--primary-blue); margin-bottom: 5px; }
+        .uni-name { font-weight: bold; color: #666; }
+
+        section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        h3.topic-title {
+            color: var(--primary-blue);
+            margin: 25px 0 10px 0;
+            font-size: 1.15rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        ul.topics-list { list-style: none; padding-left: 10px; }
+        ul.topics-list > li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+        ul.topics-list > li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .sub-topics { margin-top: 5px; padding-left: 15px; font-size: 0.95rem; color: #555; }
+
+        .eval-box { display: flex; justify-content: space-around; text-align: center; margin-top: 15px; }
+        .eval-item { padding: 15px; background: var(--bg-light); border-radius: 8px; width: 45%; }
+        .eval-item strong { font-size: 1.5rem; color: var(--primary-blue); display: block; }
+
+        /* Problem Set Styling */
+        .ps-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            transition: 0.2s;
+        }
+        .ps-card:hover { border-color: var(--accent-color); background: #fcfdfe; }
+        .ps-info h4 { color: var(--primary-blue); margin-bottom: 4px; }
+        .ps-info p { font-size: 0.85rem; color: #777; }
+        .ps-status { font-size: 0.75rem; padding: 4px 8px; border-radius: 12px; font-weight: bold; }
+        .status-ready { background: #e8f5e9; color: #2e7d32; }
+        .status-pending { background: #fff3e0; color: #ef6c00; }
+        .btn-download { color: var(--primary-blue); text-decoration: none; font-size: 1.2rem; margin-left: 15px; }
+
+        html { scroll-behavior: smooth; }
+
+        @media (max-width: 768px) {
+            nav#sidebar { width: 100%; height: auto; position: relative; }
+            body { flex-direction: column; }
+            main#content { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="sidebar">
+        <h2><i class="fas fa-atom"></i> Course Hub</h2>
+        
+        <div class="menu-category">
+            <h3>Course Topics</h3>
+            <ul>
+                <li><a href="#topic1"><i class="fas fa-microchip"></i> I. Technologies</a></li>
+                <li><a href="#topic2"><i class="fas fa-bolt"></i> II. Superconducting</a></li>
+                <li><a href="#topic3"><i class="fas fa-circle-dot"></i> III. Atomic Qubits</a></li>
+                <li><a href="#topic4"><i class="fas fa-dna"></i> IV. Spin Qubits</a></li>
+                <li><a href="#topic5"><i class="fas fa-lightbulb"></i> V. Photonic Qubits</a></li>
+            </ul>
+        </div>
+
+        <div class="menu-category">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="syllabus/syllabus-QC-Univ-Setif.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Syllabus</a></li>
+                <li><a href="#FurtherReading"><i class="fas fa-book"></i> Further Reading</a></li>
+                <li><a href="#ProblemSets"><i class="fas fa-pen-ruler"></i> Problem Sets</a></li>
+                <li><a href="#evaluation"><i class="fas fa-tasks"></i> Personal Work</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="content">
+        <header>
+            <h1>Quantum Computers</h1>
+            <p class="uni-name">University of Setif 1</p>
+            <p>Master in Quantum Computing | Semester 2</p>
+            <div style="margin-bottom: 20px;">
+                <img src="webpage-assets/images/qr-url-index.png" alt="Course QR Code" style="border-radius: 8px; padding: 5px; border: 1px solid #eee;">
+            </div>
+        </header>
+
+        <section id="course-content">
+            <h2>Course Content</h2>
+
+            <h3 id="topic1" class="topic-title">I. Overview of Current Technologies</h3>
+            <ul class="topics-list">
+                <li>Two-level systems.</li>
+                <li>Bloch Sphere from an Experimental Point of View.</li>
+                <li>DiVincenzo's Criteria.</li>
+            </ul>
+
+            <h3 id="topic2" class="topic-title">II. Superconducting Qubits</h3>
+            <ul class="topics-list">
+                <li><strong>Foundations:</strong> Introduction to Superconductivity, Cooper Pairs.</li>
+                <li><strong>Josephson Junctions:</strong> Quantum tunneling, Josephson Energy, Washboard Potential, SQUID.</li>
+                <li><strong>Implementations:</strong> 
+                    <div class="sub-topics">
+                        LC Oscillator, Anharmonic Oscillators, Cooper Pair Box, Transmon Qubit Fundamentals, Circuit QED, Jaynes-Cummings model, Qubit Readout.
+                    </div>
+                </li>
+                <li><strong>Decoherence & Gates:</strong> Sources of Decoherence, Charge/Phase/Flux Qubits, CNOT Gate using Charge Qubits.</li>
+            </ul>
+
+            <h3 id="topic3" class="topic-title">III. Atomic Qubits</h3>
+            <ul class="topics-list">
+                <li>Relevant Structure of Atoms.</li>
+                <li>Trapping and Cooling Atoms and Ions.</li>
+                <li>Ion trap Quantum Gates.</li>
+                <li>Sources of Decoherence.</li>
+            </ul>
+
+            <h3 id="topic4" class="topic-title">IV. Spin Qubits</h3>
+            <ul class="topics-list">
+                <li>Spin in an External Magnetic Field.</li>
+                <li>Spin Qubits in Silicon and Diamond NV Centers.</li>
+                <li>Sources of Decoherence.</li>
+            </ul>
+
+            <h3 id="topic5" class="topic-title">V. Photonic Qubits</h3>
+            <ul class="topics-list">
+                <li>Single Photon Sources & Basic Optical Components.</li>
+                <li>Polarization and Optical Angular Mode Encoding.</li>
+                <li>Entangled Photons, Manipulations, and Cluster States.</li>
+                <li>Sources of Decoherence.</li>
+            </ul>
+        </section>
+
+        <section id="FurtherReading">
+            <h2>Further Reading</h2>
+            <ul class="topics-list">
+                <li>
+                    <strong>Core Textbooks:</strong>
+                    <div class="sub-topics">
+                        • <a href="https://www.cambridge.org/highereducation/books/quantum-computation-and-quantum-information/01E10196D0A682A6AEFFEA52D53BE9AE" target="_blank" style="color: var(--accent-color);">Nielsen & Chuang, "Quantum Computation and Quantum Information"</a> (Cambridge University Press)<br>
+                        • <a href="https://arxiv.org/abs/1904.06560" target="_blank" style="color: var(--accent-color);">Krantz et al., "A Quantum Engineer's Guide to Superconducting Qubits"</a> (Comprehensive Review)
+                    </div>
+                </li>
+                <li>
+                    <strong>Key Literature:</strong>
+                    <div class="sub-topics">
+                        • <a href="https://arxiv.org/abs/quant-ph/0002077" target="_blank" style="color: var(--accent-color);">DiVincenzo (2000), "The Physical Implementation of Quantum Computation"</a><br>
+                        • <a href="https://www.nature.com/articles/s41586-019-1666-5" target="_blank" style="color: var(--accent-color);">Arute et al. (2019), "Quantum supremacy using a programmable superconducting processor"</a> (Google Sycamore)
+                    </div>
+                </li>
+                <li>
+                    <strong>Reference Documentation:</strong>
+                    <div class="sub-topics">
+                        • <a href="https://quantum.cloud.ibm.com/learning/en" target="_blank" style="color: var(--accent-color);">IBM Quantum Learning</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="ProblemSets">
+            <h2>Problem Sets</h2>
+            <div class="ps-card">
+                <div class="ps-info">
+                    <h4>Problem Set #1: Quantum Foundations</h4>
+                    <p>Topics: Bloch Sphere, DiVincenzo Criteria, Two-level density matrices.</p>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <span class="ps-status status-ready">Coming Soon</span>
+                    <a href="#" class="btn-download"><i class="fas fa-file-arrow-down"></i></a>
+                </div>
+            </div>
+
+            <div class="ps-card">
+                <div class="ps-info">
+                    <h4>Problem Set #2: TBA.</p>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <span class="ps-status status-ready">Coming Soon</span>
+                    <a href="#" class="btn-download"><i class="fas fa-file-arrow-down"></i></a>
+                </div>
+            </div>
+
+            <div class="ps-card" style="opacity: 0.7;">
+                <div class="ps-info">
+                    <h4>Problem Set #3: TBA.</p>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <span class="ps-status status-pending">Coming Soon</span>
+                    <i class="fas fa-lock" style="margin-left: 15px; color: #ccc;"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="evaluation">
+            <h2>Evaluation</h2>
+            <div class="eval-box">
+                <div class="eval-item">
+                    <strong>60%</strong>
+                    Final Exam
+                </div>
+                <div class="eval-item">
+                    <strong>40%</strong>
+                    Personal Work
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
